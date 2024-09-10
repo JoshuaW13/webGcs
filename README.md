@@ -4,7 +4,7 @@ This repo prototypes out arm, disarm, takeoff, land and viewing GPS info for a m
 
 Steps to run:
 1. start mission planner with a multirotor sim. Go to setup -> advanced and mavlink mirror. Set it to udp client, 115200 for baudrate and connect using local host and port 14560.
-2. 2 options:
+2. 2 options make sure to uncomment the GPS Infor code for the option you pick. If you uncomment both there will be fetch request errors:
 	1. Run MAV sdk server and the GRPC to Rest Node Js Server.
 	2. Run Mavlink2RestApi
 3. Run Setting Up Project skeleton#React front end|React front end the front end 
