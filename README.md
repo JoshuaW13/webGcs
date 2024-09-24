@@ -24,4 +24,4 @@ Mavlink2RestApi is what we are using as a messaging backend. It abstracts away a
 
 ### Front end
 
-Our front end is React application and can be run from the front_end directory with ```npm start```. You will need npm and node js installed as prerequisites.
+Our front end is React application and can be run from the front_end directory with ```npm run dev```. You will need npm and node js installed as prerequisites.
