@@ -2,50 +2,9 @@ import './App.css';
 import ActionButton from './ActionButton';
 import GpsInfo from "./GpsInfo"
 
-function ArmDrone(){
-  console.log("Arming from front end!")
-  fetch('http://localhost:8081/arm',{
-      method: 'GET',
-      headers:{
-        Accept: 'application/json',
-          'Content-Type': 'application/json',
-      },
-  });
-}
-function DisarmDrone(){
-  console.log("Arming from front end!")
-  fetch('http://localhost:8081/disarm',{
-      method: 'GET',
-      headers:{
-        Accept: 'application/json',
-          'Content-Type': 'application/json',
-      },
-  });
-}
-function TakeoffDrone(){
-  console.log("Arming from front end!")
-  fetch('http://localhost:8081/takeoff',{
-      method: 'GET',
-      headers:{
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-      },
-  });
-}
-function LandDrone(){
-  console.log("Arming from front end!")
-  fetch('http://localhost:8081/land',{
-      method: 'GET',
-      headers:{
-        Accept: 'application/json',
-          'Content-Type': 'application/json',
-      },
-  });
-}
-
-function SecondArmDrone(){
+function SecondArmDrone() {
   console.log("Doing the api arm drone!");
-  fetch('http://127.0.0.1:8088/v1/mavlink',{
+  fetch('http://127.0.0.1:8088/v1/mavlink', {
     method: "POST",
     body: JSON.stringify({
       "header": {
@@ -54,9 +13,9 @@ function SecondArmDrone(){
         "sequence": 0
       },
       "message": {
-        "type":"COMMAND_LONG",
+        "type": "COMMAND_LONG",
         "param1": 1.0,
-        "param2": 0.0,"param3":0.0,"param4":0.0,"param5":0.0,"param6":0.0,"param7":0.0,
+        "param2": 0.0, "param3": 0.0, "param4": 0.0, "param5": 0.0, "param6": 0.0, "param7": 0.0,
         "command": {
           "type": "MAV_CMD_COMPONENT_ARM_DISARM"
         },
@@ -65,17 +24,16 @@ function SecondArmDrone(){
         "confirmation": 1
       }
     }),
-    headers:{
+    headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
   })
 }
 
-//sakdljsakd
 
-function SecondDisarmDrone(){
+function SecondDisarmDrone() {
   console.log("Doing the api arm drone!");
-  fetch('http://127.0.0.1:8088/v1/mavlink',{
+  fetch('http://127.0.0.1:8088/v1/mavlink', {
     method: "POST",
     body: JSON.stringify({
       "header": {
@@ -84,9 +42,9 @@ function SecondDisarmDrone(){
         "sequence": 0
       },
       "message": {
-        "type":"COMMAND_LONG",
+        "type": "COMMAND_LONG",
         "param1": 0.0,
-        "param2": 0.0,"param3":0.0,"param4":0.0,"param5":0.0,"param6":0.0,"param7":0.0,
+        "param2": 0.0, "param3": 0.0, "param4": 0.0, "param5": 0.0, "param6": 0.0, "param7": 0.0,
         "command": {
           "type": "MAV_CMD_COMPONENT_ARM_DISARM"
         },
@@ -95,15 +53,15 @@ function SecondDisarmDrone(){
         "confirmation": 1
       }
     }),
-    headers:{
+    headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
   })
 }
 
-function SecondTakeoffDrone(){
+function SecondTakeoffDrone() {
   console.log("Doing the api arm drone!");
-  fetch('http://127.0.0.1:8088/v1/mavlink',{
+  fetch('http://127.0.0.1:8088/v1/mavlink', {
     method: "POST",
     body: JSON.stringify({
       "header": {
@@ -112,9 +70,9 @@ function SecondTakeoffDrone(){
         "sequence": 0
       },
       "message": {
-        "type":"COMMAND_LONG",
+        "type": "COMMAND_LONG",
         "param1": 0,
-        "param2": 0,"param3":0,"param4":0,"param5":0,"param6":0,"param7":10,
+        "param2": 0, "param3": 0, "param4": 0, "param5": 0, "param6": 0, "param7": 10,
         "command": {
           "type": "MAV_CMD_NAV_TAKEOFF"
         },
@@ -123,15 +81,15 @@ function SecondTakeoffDrone(){
         "confirmation": 1
       }
     }),
-    headers:{
+    headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
   })
 }
 
-function SecondLandDrone(){
+function SecondLandDrone() {
   console.log("Doing the api arm drone!");
-  fetch('http://127.0.0.1:8088/v1/mavlink',{
+  fetch('http://127.0.0.1:8088/v1/mavlink', {
     method: "POST",
     body: JSON.stringify({
       "header": {
@@ -140,9 +98,9 @@ function SecondLandDrone(){
         "sequence": 0
       },
       "message": {
-        "type":"COMMAND_LONG",
+        "type": "COMMAND_LONG",
         "param1": 0,
-        "param2": 0,"param3":0,"param4":0,"param5":0,"param6":0,"param7":0,
+        "param2": 0, "param3": 0, "param4": 0, "param5": 0, "param6": 0, "param7": 0,
         "command": {
           "type": "MAV_CMD_NAV_LAND"
         },
@@ -151,7 +109,7 @@ function SecondLandDrone(){
         "confirmation": 1
       }
     }),
-    headers:{
+    headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
   })
@@ -160,14 +118,10 @@ function SecondLandDrone(){
 function App() {
   return (
     <div className="App">
-      <ActionButton action = {ArmDrone} buttonText = "Arm"></ActionButton>
-      <ActionButton action = {DisarmDrone} buttonText = "Disarm"></ActionButton>
-      <ActionButton action = {TakeoffDrone} buttonText = "Takeoff"></ActionButton>
-      <ActionButton action = {LandDrone} buttonText = "Land"></ActionButton>
-      <ActionButton action = {SecondArmDrone} buttonText = "Second Arm"></ActionButton> 
-      <ActionButton action = {SecondDisarmDrone} buttonText = "Second DisArm"></ActionButton>  
-      <ActionButton action = {SecondTakeoffDrone} buttonText = "Second Takeoff"></ActionButton>
-      <ActionButton action = {SecondLandDrone} buttonText = "Second Land"></ActionButton>
+      <ActionButton action={SecondArmDrone} buttonText="Second Arm"></ActionButton>
+      <ActionButton action={SecondDisarmDrone} buttonText="Second DisArm"></ActionButton>
+      <ActionButton action={SecondTakeoffDrone} buttonText="Second Takeoff"></ActionButton>
+      <ActionButton action={SecondLandDrone} buttonText="Second Land"></ActionButton>
       <GpsInfo></GpsInfo>
     </div>
   );
