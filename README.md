@@ -1,47 +1,27 @@
-### Overview
+## Overview
 
-This repo prototypes out arm, disarm, takeoff, land and viewing GPS info for a mavsdk server and a mavlink2restapi based implementation.
+This repo contains a prototype for the web based GCS demonstrating basic commands for arming and disarming motors as well as takeoff and landing.
 
-Steps to run:
-1. start mission planner with a multirotor sim. Go to setup -> advanced and mavlink mirror. Set it to udp client, 115200 for baudrate and connect using local host and port 14560.
-2. 2 options make sure to uncomment the GPS Infor code for the option you pick. If you uncomment both there will be fetch request errors:
-	1. Run MAV sdk server and the GRPC to Rest Node Js Server.
-	2. Run Mavlink2RestApi
-3. Run Setting Up Project skeleton#React front end|React front end the front end 
+## Setup and Running
 
-### Individual Tool Setups
-#### Mission Planner:
-- installed mission planner
-- run mission planner simulation as multirotor x and use mavlink mirror on port 14560, udp client, 115200 baud rate and connect. You can now connect with a separate instance of mission planner to same vehicle.
-####  MAV sdk server:
-clone the repo:
-```
+### Mission Planner
 
-git clone https://github.com/mavlink/MAVSDK.git
-git submodule update --init --recursive
+Mission planner is the GCS used to simulate a drone and verify correct implementation for features on our end. Below are steps to set it up and get it running.
 
-```
-After cloning the repo navigate to it and run the following. You will need MSVC 2022 with C++ build tools, cmake and strawberry perl installed:
-```
-cmake -DCMAKE_INSTALL_PREFIX=build/install_debug -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_MAVSDK_SERVER=YES -Bbuild/debug
-cmake --build build/debug --config Debug --target install
-```
-run 
-```
-path/to/executable/mavsdk_server_bin.exe udp://:14560 -p 50000
-```
-#### GRPC to Rest Node Js Server
-You need node installed to run this. The server can be run with the below command
-```
-node src\mavsdk-rest.js
-```
-#### React front end
-Run with
-```
-npm start
-```
+1. Install mission planner [here](https://ardupilot.org/planner/docs/mission-planner-installation.html)
+2. Open Mission planner and navigate to the simulation tab.
+3. Choose multirotor and run the latest stable version.
+4. Go to the setup tab, click the advanced menu and select mavlink mirror. Here choose UDP client, any baudrate and check the write access box. Click connect and when prompted give an IP of 127.0.0.1 and a port of 14660.
 
-#### Mavlink2RestApi
-- Use the second buttons on the webpage to test out this implementation.
-- Easy to run but for some reason endpoints only work when you use 127.0.0.1 as local host not 0.0.0.0
-- You need to be in Guided mode to takeoff. You can do this from mission planner for now.
+Now mission planner should be good to go to simulate the vehicle!
+
+### Mavlink2RestApi
+
+Mavlink2RestApi is what we are using as a messaging backend. It abstracts away a good amount of the networking side of things leaving only protocol specifics for us to handle.
+
+1. Download the latest release of the api [here](https://github.com/mavlink/mavlink2rest)
+2. Run with ```mavlink2rest-x86_64-pc-windows-msvc.exe -c udpin:127.0.0.1:14560```
+
+### Front end
+
+Our front end is React application and can be run from the front_end directory with ```npm start```. You will need npm and node js installed as prerequisites.
