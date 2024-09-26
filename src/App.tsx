@@ -1,6 +1,7 @@
 import './App.css';
-import ActionButton from './ActionButton';
-import GpsInfo from "./GpsInfo"
+import ActionButton from './components/ActionButton';
+import GpsInfo from "./components/GpsInfo"
+import { DroneProvider } from './context/DroneContext';
 
 function ArmDrone() {
   console.log("Doing the api arm drone!");
@@ -118,11 +119,13 @@ function LandDrone() {
 function App() {
   return (
     <div className="App">
-      <ActionButton action={ArmDrone} buttonText=" Arm"></ActionButton>
-      <ActionButton action={DisarmDrone} buttonText=" DisArm"></ActionButton>
-      <ActionButton action={TakeoffDrone} buttonText=" Takeoff"></ActionButton>
-      <ActionButton action={LandDrone} buttonText=" Land"></ActionButton>
-      <GpsInfo></GpsInfo>
+      <DroneProvider>
+        <ActionButton action={ArmDrone} buttonText=" Arm"></ActionButton>
+        <ActionButton action={DisarmDrone} buttonText=" DisArm"></ActionButton>
+        <ActionButton action={TakeoffDrone} buttonText=" Takeoff"></ActionButton>
+        <ActionButton action={LandDrone} buttonText=" Land"></ActionButton>
+        <GpsInfo></GpsInfo>
+      </DroneProvider>
     </div>
   );
 }
