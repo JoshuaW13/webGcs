@@ -10,8 +10,8 @@ Mission planner is the GCS used to simulate a drone and verify correct implement
 
 1. Install mission planner [here](https://ardupilot.org/planner/docs/mission-planner-installation.html)
 2. Open Mission planner and navigate to the simulation tab.
-3. Choose multirotor and run the latest stable version.
-4. Go to the setup tab, click the advanced menu and select mavlink mirror. Here choose UDP client, any baudrate and check the write access box. Click connect and when prompted give an IP of 127.0.0.1 and a port of 14660.
+3. Choose multirotor and run the stable version not the latest(dev).
+4. Go to the setup tab, click the advanced menu and select mavlink mirror. Here choose UDP client, any baudrate and check the write access box. Click connect and when prompted give an IP of 127.0.0.1 and a port of 14560.
 
 Now mission planner should be good to go to simulate the vehicle!
 
